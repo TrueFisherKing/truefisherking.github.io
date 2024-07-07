@@ -21,11 +21,10 @@ let qrImages = [];
 let controlText = locations[0];
 let stateLocation = controlText.substring(controlText.indexOf(",") + 2, controlText.length);
 let imgControlText = controlText.replace(", ","-").toLowerCase();
+let selectLocation = createElementPlus("select",controller,null,{id:"location",name:"location"},null);
 
 theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
-
 getStateName();
-let selectLocation = createElementPlus("select",controller,null,{id:"location",name:"location"},null);
 
 for (let i = 0; i < locations.length; i++) {
     const location = locations[i];
@@ -39,27 +38,9 @@ printCards.addEventListener("click",function(){
 salesInput.addEventListener('click', () => {
     salesInput.select();
 });
-salesInput.addEventListener("keyup",function(){
-    salesPerson = salesInput.value;
-    salesNames.forEach(function(sn){
-        sn.innerText = salesPerson;
-    });
-    theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
-});
-selectLocation.addEventListener("change",function(){
-    controlText = locations[selectLocation.options.selectedIndex];
-    stateLocation = controlText.substring(controlText.indexOf(",") + 2,controlText.length );
-    getStateName();
-    tftParagraphs.forEach(function(tftP){
-        tftP.innerHTML = `Town Fair Tire Centers <br>of ${stateName} LLC <br>${controlText}`;
-    });
-    imgControlText = controlText.replace(", ","-").toLowerCase();
-    qrImages.forEach(function(qrImg){
-        qrImg.setAttribute("src",`images/qr-codes/${imgControlText}.png`);
-    });
-    
-    theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
-});
+salesInput.addEventListener("keyup", updateSalesName);
+salesInput.addEventListener("change", updateSalesName);
+selectLocation.addEventListener("change", updateLocation);
 
 for (let i = 0; i < 12; i++) {  
     let card = createElementPlus("div",cards,"card",null,null);
@@ -69,14 +50,11 @@ for (let i = 0; i < 12; i++) {
     // Create QR Code Logo
     let qrImage = createElementPlus("img",images,null,{src:`images/qr-codes/${imgControlText}.png`,alt:`QR Code`},null);
     qrImages.push(qrImage);
-    
     let textDiv = createElementPlus("div",card,"text",null,null);
     let top = createElementPlus("div",textDiv,"top",null,null);
-
     // Name of sales person
     let mid = createElementPlus("div",textDiv,"mid",null,salesPerson);
     salesNames.push(mid);
-    // console.log(salesNames[0].innerText);
     // Create top paragraph
     createElementPlus("p",top,null,null,"Guaranteed Lowest Price");
     // Create next two paragraphs
@@ -87,7 +65,7 @@ for (let i = 0; i < 12; i++) {
         // create star image
         createElementPlus("img",stars,null,{src:"images/star.png",alt:"star"},null);
         // createElementPlus("div",stars,"star",null,null);
-    }
+    };
     let bottom = createElementPlus("div",textDiv,"bottom",null,null);
     // Create Salesman line
     createElementPlus("p",bottom,null,null,"Your Salesman");
@@ -112,8 +90,28 @@ function createElementPlus(elementType,appendToElement,theClass,theAttributes,th
     }
     createdElement.innerHTML = theText;
     return createdElement;
-}
-
+};
+function updateSalesName(){
+    salesPerson = salesInput.value;
+    salesNames.forEach(function(sn){
+        sn.innerText = salesPerson;
+    });
+    theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
+};
+function updateLocation(){
+    controlText = locations[selectLocation.options.selectedIndex];
+    stateLocation = controlText.substring(controlText.indexOf(",") + 2,controlText.length );
+    getStateName();
+    tftParagraphs.forEach(function(tftP){
+        tftP.innerHTML = `Town Fair Tire Centers <br>of ${stateName} LLC <br>${controlText}`;
+    });
+    imgControlText = controlText.replace(", ","-").toLowerCase();
+    qrImages.forEach(function(qrImg){
+        qrImg.setAttribute("src",`images/qr-codes/${imgControlText}.png`);
+    });
+    
+    theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
+};
 function getStateName(){
     if (stateLocation == "CT") {
         stateName = "Connecticut";
