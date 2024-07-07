@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+@page {
+    size: landscape;
+}
 input::selection {
     background: hsla(0, 0%, 0%, 0.8);
     color: #fff;
@@ -160,9 +163,6 @@ footer img {
     }
   }
 @media screen {
-    html {
-        zoom: 250%;
-    }
     .cards {
         display: flex;
         justify-content: center;
@@ -174,5 +174,20 @@ footer img {
     }
     .cards .card {
         border: 1px solid #aaa;
+    }
+}
+@media screen and (min-width: 720px) {
+    html {
+        zoom: 150%;
+    }
+}
+@media screen and (min-width: 920px) {
+    html {
+        zoom: 200%;
+    }
+}
+@media screen and (min-width: 1150px) {
+    html {
+        zoom: 250%;
     }
 }
