@@ -8,8 +8,10 @@ input::selection {
     background: hsla(0, 0%, 0%, 0.8);
     color: #fff;
 }
-input:focus,select:focus {
+input:focus,select:focus,button:focus {
+    /* outline: none; */
     outline: none;
+    border: 1px solid #00f;
 }
 body {
     display: flex;
@@ -32,9 +34,9 @@ input, select {
     border: 1px solid #ccc;
 }
 .print-card {
-    background: #00f;
+    background: #88f;
     color: #fff;
-    border: 0px;
+    border: 1px solid #fff;
 
     padding: 10px 20px;
 }

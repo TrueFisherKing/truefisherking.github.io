@@ -10,6 +10,8 @@ let salesPerson = "Fisher";
 let theTitle = document.querySelector("title");
 let controller = document.querySelector("#controller");
 let salesInput = document.querySelector("#salesInput");
+salesInput.focus();
+salesInput.select();
 let cards = document.querySelector(".cards");
 
 let stateName = "";
@@ -44,7 +46,7 @@ salesInput.addEventListener("keyup",function(){
     });
     theTitle.innerText = `TFT Card - ${controlText.replace(",","")} - ${salesPerson}`;
 });
-selectLocation.addEventListener("click",function(){
+selectLocation.addEventListener("change",function(){
     controlText = locations[selectLocation.options.selectedIndex];
     stateLocation = controlText.substring(controlText.indexOf(",") + 2,controlText.length );
     getStateName();
