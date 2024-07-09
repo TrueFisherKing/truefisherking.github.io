@@ -108,20 +108,18 @@ input, select {
     display: flex;
     justify-content: center;
     gap: 4px;
-    margin: 0 auto;
+    margin: 5px auto 0;
     padding: 0;
     width: 80%;
 }
 .text .mid {
     color: #04C;
-    
     font-family: "Square Peg", cursive;
-
     font-weight: 500;
     font-style: italic;
-    font-size: 5em;
+    font-size: 6em;
     height: 63.64px;
-    margin: 0px 0px -26px;
+    margin: -28px 0px -28px;
     padding: 0px;
     position: relative;
 }
@@ -150,7 +148,7 @@ footer {
 }
 footer img {
     object-fit: contain;
-    margin-top: -0.2em;
+    margin-top: -0.4em;
     margin-left: 0.5em;
     width: 4.5em;
 }
