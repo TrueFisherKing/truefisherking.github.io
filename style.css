@@ -4,14 +4,26 @@
 @page {
     size: landscape;
 }
+html {
+    height: 100vh;
+    overflow: hidden;
+}
 input::selection {
-    background: hsla(0, 0%, 0%, 0.8);
+    background: #77f;
     color: #fff;
 }
 input:focus,select:focus,button:focus {
     /* outline: none; */
     outline: none;
-    border: 1px solid #00f;
+    border: 1px solid #77f;
+}
+button {
+    text-transform: uppercase;
+}
+button:focus {
+    border: 1px solid #7c7;
+    background: #7c7;
+    color: #fff;
 }
 body {
     display: flex;
