@@ -33,7 +33,7 @@ for (let i = 0; i < locations.length; i++) {
 
 let printCards = createElementPlus("button", controller, "print-card", null, "Print Card");
 printCards.addEventListener("click", function () {
-    print();
+    print()
 });
 salesInput.addEventListener('click', () => {
     salesInput.select();
@@ -107,7 +107,7 @@ function updateLocation() {
     });
     imgControlText = controlText.replace(", ", "-").toLowerCase();
     qrImages.forEach(function (qrImg) {
-        qrImg.setAttribute("src", ``);
+        qrImg.setAttribute("src", `images/qr-codes/${imgControlText}.png`);
     });
 
     theTitle.innerText = `TFT Card - ${controlText.replace(",", "")} - ${salesPerson}`;
@@ -135,7 +135,6 @@ function getStateName() {
         case "VT":
             stateName = "Vermont";
             break;
-
         default:
             break;
     }
