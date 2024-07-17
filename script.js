@@ -1,8 +1,10 @@
+(function(){
 let locations = [
     "Branford, CT",
     "Fairfield, CT",
     "Hamden, CT",
     "Milford, CT",
+    "North Haven, CT",
     "Orange, CT",
 ];
 let salesPerson = "Fisher";
@@ -139,3 +141,4 @@ function getStateName() {
             break;
     }
 };
+})()
