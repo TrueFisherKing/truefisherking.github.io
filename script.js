@@ -1,6 +1,7 @@
 (function(){
 let locations = [
     "Branford, CT",
+    "Derby, CT",
     "Fairfield, CT",
     "Hamden, CT",
     "Milford, CT",
